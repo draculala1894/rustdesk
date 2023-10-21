@@ -155,7 +155,7 @@ class ServerModel with ChangeNotifier {
             }
           } else {
             _zeroClientLengthCounter = 0;
-            if (!hideCm) showCmWindow();
+            // if (!hideCm) showCmWindow();
           }
         }
       }
@@ -256,7 +256,7 @@ class ServerModel with ChangeNotifier {
         if (hideCm) {
           await hideCmWindow();
         } else {
-          await showCmWindow();
+         // await showCmWindow();
         }
       }
       update = true;
@@ -462,13 +462,9 @@ class ServerModel with ChangeNotifier {
         debugPrint("Failed to decode clientJson '$clientJson', error $e");
       }
     }
-    if (desktopType == DesktopType.cm) {
-      if (_clients.isEmpty) {
+    if (desktopType == DesktopType.cm && _clients.isEmpty) {
         hideCmWindow();
-      } else if (!hideCm) {
-        showCmWindow();
       }
-    }
     if (_clients.length != oldClientLenght) {
       notifyListeners();
     }
@@ -500,7 +496,7 @@ class ServerModel with ChangeNotifier {
         tabController.remove(index_disconnected);
       }
       if (desktopType == DesktopType.cm && !hideCm) {
-        showCmWindow();
+       // showCmWindow();
       }
       scrollToBottom();
       notifyListeners();
